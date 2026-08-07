@@ -71,13 +71,20 @@ export function Layout() {
       </main>
 
       <footer className="site-footer">
-        <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-6 text-sm text-[var(--muted)] md:flex-row md:items-center md:justify-between">
-          <p>
-            <span className="font-display text-[var(--indigo)]">HedBoon AI</span>
-            {' — '}
-            ผู้ช่วยวางแผนประเพณีและพิธีกรรมอีสาน
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-sm text-[var(--muted)]">
+          <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+            <p>
+              <span className="font-display text-[var(--indigo)]">HedBoon AI</span>
+              {' — '}
+              ผู้ช่วยวางแผนประเพณีและพิธีกรรมอีสาน
+            </p>
+            <p>ข้อมูลเพื่อการเรียนรู้ ควรสอบทานกับผู้รู้ท้องถิ่นก่อนจัดงานจริง</p>
+          </div>
+          <p className="text-xs leading-relaxed md:text-sm">
+            โดย เด็กชายไตรภูมิ สุวรรณยุทธที, เด็กชายธนกฤต ประสิทธิ์นอก, เด็กชายสุกฤษฎิ์ ยอดคำมี
+            {' · '}
+            ครูที่ปรึกษา : นางสาวกฤติยา พลหาญ, นายสิทธิชัย ทิพย์สิงห์
           </p>
-          <p>ข้อมูลเพื่อการเรียนรู้ ควรสอบทานกับผู้รู้ท้องถิ่นก่อนจัดงานจริง</p>
         </div>
       </footer>
     </div>
