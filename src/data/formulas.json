@@ -1,0 +1,7 @@
+{
+  "riceKgPerGuest": 0.3,
+  "waterBottlesPerGuest": 1.5,
+  "seatsPerTable": 8,
+  "dessertSetsPerGuest": 1,
+  "monkMealSetsDefault": 9
+}

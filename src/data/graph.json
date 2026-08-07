@@ -1,0 +1,181 @@
+{
+  "nodes": [
+    {
+      "id": "khan5",
+      "label": "ขันธ์ 5",
+      "kind": "item",
+      "detail": "เครื่องบูชาพื้นฐานในพิธีมงคล"
+    },
+    {
+      "id": "housewarming",
+      "label": "ขึ้นบ้านใหม่",
+      "kind": "ceremony",
+      "detail": "พิธีความเป็นสิริมงคลแก่เรือนใหม่"
+    },
+    {
+      "id": "ordination",
+      "label": "งานบวช",
+      "kind": "ceremony",
+      "detail": "พิธีอุปสมบท/บรรพชา"
+    },
+    {
+      "id": "flowers",
+      "label": "ดอกไม้",
+      "kind": "component"
+    },
+    {
+      "id": "incense",
+      "label": "ธูป",
+      "kind": "component"
+    },
+    {
+      "id": "candles",
+      "label": "เทียน",
+      "kind": "component"
+    },
+    {
+      "id": "khao-tok",
+      "label": "ข้าวตอก",
+      "kind": "component"
+    },
+    {
+      "id": "meaning-respect",
+      "label": "ความเคารพในพิธี",
+      "kind": "belief",
+      "detail": "จัดเครื่องบูชาครบ สะอาด เป็นระเบียบ"
+    },
+    {
+      "id": "sai-sin",
+      "label": "สายสิญจน์",
+      "kind": "item",
+      "detail": "ด้ายมงคลในพิธี"
+    },
+    {
+      "id": "baisi",
+      "label": "บายศรี",
+      "kind": "item",
+      "detail": "เครื่องสู่ขวัญ"
+    },
+    {
+      "id": "belief-kwan",
+      "label": "ความเชื่อเรื่องขวัญ",
+      "kind": "belief",
+      "detail": "เรียกขวัญให้มาอยู่เป็นสิริมงคล"
+    },
+    {
+      "id": "taboo-quarrel",
+      "label": "ห้ามทะเลาะในวันงาน",
+      "kind": "taboo"
+    },
+    {
+      "id": "holy-water",
+      "label": "น้ำมนต์",
+      "kind": "item",
+      "detail": "ใช้เป็นมงคล รักษาโรค หรือระงับทุกข์ภัย — ภาคอีสานใช้น้ำสะอาด ฝักส้มป่อยแห่ง เทียนขี้ผึ้ง สายสิญจน์ และบทสวดมนต์"
+    },
+    {
+      "id": "khan-nam-mon",
+      "label": "ขันน้ำมนต์",
+      "kind": "item",
+      "detail": "ภาชนะใส่น้ำมนต์ในพิธีมงคล"
+    },
+    {
+      "id": "ya-kha",
+      "label": "มัดหญ้าคา",
+      "kind": "item",
+      "detail": "ใช้ประพรมน้ำมนต์"
+    },
+    {
+      "id": "wedding",
+      "label": "งานแต่งอีสาน",
+      "kind": "ceremony",
+      "detail": "พิธีแต่งงานสู่ขวัญและขันหมาก"
+    },
+    {
+      "id": "suKwan",
+      "label": "สู่ขวัญ",
+      "kind": "ceremony"
+    },
+    {
+      "id": "riceHeap",
+      "label": "บุญกองข้าว",
+      "kind": "ceremony"
+    },
+    {
+      "id": "ageMerit",
+      "label": "บุญอายุ",
+      "kind": "ceremony"
+    },
+    {
+      "id": "puTa",
+      "label": "เลี้ยงปู่ตา",
+      "kind": "ceremony"
+    },
+    {
+      "id": "athi",
+      "label": "บุญอัฐิ",
+      "kind": "ceremony",
+      "detail": "กองบุญอัฏฐะ / บุญแจกข้าว อุทิศแก่ผู้ล่วงลับ"
+    },
+    {
+      "id": "kong-boon",
+      "label": "กองบุญอัฏฐะ",
+      "kind": "item",
+      "detail": "เสื่อ หมอน มุ้ง จีวร ข้าวสาร อาหารแห้ง"
+    },
+    {
+      "id": "taHaek",
+      "label": "เลี้ยงผีตาแฮก",
+      "kind": "ceremony",
+      "detail": "เซ่นไหว้ผีประจำนาก่อนปักดำและหลังเก็บเกี่ยว"
+    },
+    {
+      "id": "sticky-rice",
+      "label": "ข้าวเหนียวกระติบ",
+      "kind": "component"
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "khan5", "target": "housewarming", "label": "ใช้ใน" },
+    { "id": "e2", "source": "khan5", "target": "ordination", "label": "ใช้ใน" },
+    { "id": "e3", "source": "khan5", "target": "flowers", "label": "ประกอบด้วย" },
+    { "id": "e4", "source": "khan5", "target": "incense", "label": "ประกอบด้วย" },
+    { "id": "e5", "source": "khan5", "target": "candles", "label": "ประกอบด้วย" },
+    { "id": "e6", "source": "khan5", "target": "khao-tok", "label": "ประกอบด้วย" },
+    { "id": "e7", "source": "khan5", "target": "meaning-respect", "label": "มีความหมาย" },
+    { "id": "e8", "source": "sai-sin", "target": "housewarming", "label": "ใช้ใน" },
+    { "id": "e9", "source": "sai-sin", "target": "ordination", "label": "ใช้ใน" },
+    { "id": "e10", "source": "baisi", "target": "housewarming", "label": "ใช้ใน" },
+    { "id": "e11", "source": "baisi", "target": "ordination", "label": "ใช้ใน" },
+    { "id": "e12", "source": "baisi", "target": "belief-kwan", "label": "เชื่อมกับ" },
+    { "id": "e13", "source": "housewarming", "target": "taboo-quarrel", "label": "ข้อห้าม" },
+    { "id": "e14", "source": "holy-water", "target": "housewarming", "label": "ใช้ใน" },
+    { "id": "e15", "source": "sai-sin", "target": "belief-kwan", "label": "เชื่อมกับ" },
+    { "id": "e16", "source": "khan5", "target": "wedding", "label": "ใช้ใน" },
+    { "id": "e17", "source": "baisi", "target": "wedding", "label": "ใช้ใน" },
+    { "id": "e18", "source": "baisi", "target": "suKwan", "label": "ใช้ใน" },
+    { "id": "e19", "source": "sai-sin", "target": "suKwan", "label": "ใช้ใน" },
+    { "id": "e20", "source": "khan5", "target": "riceHeap", "label": "ใช้ใน" },
+    { "id": "e21", "source": "khan5", "target": "ageMerit", "label": "ใช้ใน" },
+    { "id": "e22", "source": "flowers", "target": "puTa", "label": "ใช้ใน" },
+    { "id": "e23", "source": "khan5", "target": "athi", "label": "ใช้ใน" },
+    { "id": "e24", "source": "holy-water", "target": "athi", "label": "ใช้ใน" },
+    { "id": "e25", "source": "kong-boon", "target": "athi", "label": "ใช้ใน" },
+    { "id": "e26", "source": "kong-boon", "target": "meaning-respect", "label": "มีความหมาย" },
+    { "id": "e27", "source": "flowers", "target": "taHaek", "label": "ใช้ใน" },
+    { "id": "e28", "source": "sticky-rice", "target": "taHaek", "label": "ใช้ใน" },
+    { "id": "e29", "source": "incense", "target": "taHaek", "label": "ใช้ใน" },
+    { "id": "e30", "source": "khan-nam-mon", "target": "housewarming", "label": "ใช้ใน" },
+    { "id": "e31", "source": "khan-nam-mon", "target": "wedding", "label": "ใช้ใน" },
+    { "id": "e32", "source": "khan-nam-mon", "target": "ordination", "label": "ใช้ใน" },
+    { "id": "e33", "source": "khan-nam-mon", "target": "ageMerit", "label": "ใช้ใน" },
+    { "id": "e34", "source": "khan-nam-mon", "target": "riceHeap", "label": "ใช้ใน" },
+    { "id": "e35", "source": "ya-kha", "target": "housewarming", "label": "ใช้ใน" },
+    { "id": "e36", "source": "ya-kha", "target": "wedding", "label": "ใช้ใน" },
+    { "id": "e37", "source": "ya-kha", "target": "ordination", "label": "ใช้ใน" },
+    { "id": "e38", "source": "ya-kha", "target": "ageMerit", "label": "ใช้ใน" },
+    { "id": "e39", "source": "ya-kha", "target": "riceHeap", "label": "ใช้ใน" },
+    { "id": "e40", "source": "ya-kha", "target": "holy-water", "label": "ใช้กับ" },
+    { "id": "e41", "source": "khan-nam-mon", "target": "holy-water", "label": "ใส่น้ำ" }
+  ]
+}

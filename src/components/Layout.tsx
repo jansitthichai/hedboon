@@ -1,0 +1,85 @@
+import { NavLink, Outlet } from 'react-router-dom'
+
+const links = [
+  { to: '/', label: 'หน้าแรก', end: true },
+  { to: '/plan', label: 'วางแผนงานบุญ' },
+  { to: '/graph', label: 'Knowledge Graph' },
+  { to: '/timeline', label: 'ฮีต 12' },
+  { to: '/ask', label: 'คุยกับ AI' },
+]
+
+export function Layout() {
+  return (
+    <div className="flex min-h-screen flex-col">
+      <header className="site-header">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+          <NavLink to="/" className="flex items-center gap-3">
+            <span className="logo-mark font-display text-lg">
+              <span>เฮ</span>
+            </span>
+            <span>
+              <span className="font-display block text-lg leading-none text-[var(--indigo)]">
+                HedBoon
+              </span>
+              <span className="mt-0.5 block text-xs tracking-wide text-[var(--muted)]">
+                เฮ็ดบุญ · ผู้ช่วยประเพณีอีสาน
+              </span>
+            </span>
+          </NavLink>
+
+          <nav className="hidden items-center gap-1 md:flex">
+            {links.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.end}
+                className={({ isActive }) =>
+                  ['nav-pill', isActive ? 'nav-pill-active' : 'text-[var(--muted)] hover:bg-[var(--mist)] hover:text-[var(--indigo)]'].join(
+                    ' ',
+                  )
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
+
+        <div className="flex gap-1.5 overflow-x-auto px-4 pb-3 md:hidden">
+          {links.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.end}
+              className={({ isActive }) =>
+                [
+                  'shrink-0 rounded-lg px-3 py-1.5 text-xs transition',
+                  isActive
+                    ? 'nav-pill-active'
+                    : 'bg-white/80 text-[var(--muted)] shadow-sm',
+                ].join(' ')
+              }
+            >
+              {link.label}
+            </NavLink>
+          ))}
+        </div>
+      </header>
+
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:py-10">
+        <Outlet />
+      </main>
+
+      <footer className="site-footer">
+        <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-6 text-sm text-[var(--muted)] md:flex-row md:items-center md:justify-between">
+          <p>
+            <span className="font-display text-[var(--indigo)]">HedBoon AI</span>
+            {' — '}
+            ผู้ช่วยวางแผนประเพณีและพิธีกรรมอีสาน
+          </p>
+          <p>ข้อมูลเพื่อการเรียนรู้ ควรสอบทานกับผู้รู้ท้องถิ่นก่อนจัดงานจริง</p>
+        </div>
+      </footer>
+    </div>
+  )
+}
