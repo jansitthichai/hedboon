@@ -220,26 +220,58 @@ textarea {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: linear-gradient(145deg, #1e3a5f 0%, #2a4f6e 48%, #2f6b4f 100%);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--line);
   border-radius: 1.25rem;
-  box-shadow: 0 12px 32px rgba(30, 58, 95, 0.18);
+  box-shadow: 0 8px 24px rgba(28, 40, 54, 0.1);
+  background-color: #1e3a5f;
+  background-image: url('/hero-ceremony.png');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: cover;
+  min-height: 280px;
+}
+
+.hero-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    to right,
+    rgba(28, 40, 54, 0.9) 0%,
+    rgba(28, 40, 54, 0.78) 32%,
+    rgba(28, 40, 54, 0.45) 52%,
+    rgba(28, 40, 54, 0.12) 72%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
 .hero-panel::after {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 10% 90%, rgba(0, 0, 0, 0.08) 0%, transparent 40%);
+  z-index: 0;
+  background: linear-gradient(to top, rgba(28, 40, 54, 0.25) 0%, transparent 40%);
   pointer-events: none;
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
+}
+
+.hero-panel .badge-sticker {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--ink);
+}
+
+.hero-panel .badge-sticker-accent {
+  background: var(--gold-soft);
+  color: var(--gold-deep);
+  border-color: rgba(138, 106, 47, 0.25);
 }
 
 .site-header {
