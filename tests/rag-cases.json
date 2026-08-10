@@ -1,0 +1,145 @@
+[
+  {
+    "id": "q01",
+    "question": "งานขึ้นบ้านใหม่ต้องเตรียมอะไรบ้าง?",
+    "expectCeremonyId": "housewarming",
+    "expectKeywords": ["ขึ้นบ้าน", "ค้ำคูณ", "เตรียม"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q02",
+    "question": "ขันธ์ 5 คืออะไร?",
+    "expectKeywords": ["ขันธ์", "ขัน"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q03",
+    "question": "งานบวชมีขั้นตอนอะไรบ้าง?",
+    "expectCeremonyId": "ordination",
+    "expectKeywords": ["บวช", "นาค"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q04",
+    "question": "งานแต่งงานอีสานมีพิธีอะไร?",
+    "expectCeremonyId": "wedding",
+    "expectKeywords": ["แต่ง"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q05",
+    "question": "บุญกองข้าวคืออะไร?",
+    "expectCeremonyId": "riceHeap",
+    "expectKeywords": ["กองข้าว"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q06",
+    "question": "งานสู่ขวัญใช้สิ่งของอะไร?",
+    "expectCeremonyId": "suKwan",
+    "expectKeywords": ["สู่ขวัญ", "บายศรี"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q07",
+    "question": "บุญอายุมีความเชื่ออย่างไร?",
+    "expectCeremonyId": "ageMerit",
+    "expectKeywords": ["บุญอายุ", "สะเดาะ"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q08",
+    "question": "งานเลี้ยงปู่ตามีองค์ประกอบอะไร?",
+    "expectCeremonyId": "puTa",
+    "expectKeywords": ["ปู่ตา"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q09",
+    "question": "บุญอัฐิคืออะไร?",
+    "expectCeremonyId": "athi",
+    "expectKeywords": ["อัฐิ", "แจกข้าว", "กองบุญ"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q10",
+    "question": "ผีตาแฮกเกี่ยวข้องกับอะไร?",
+    "expectCeremonyId": "taHaek",
+    "expectKeywords": ["ตาแฮก", "นา"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q11",
+    "question": "บายศรีใช้ทำอะไรในงานบุญอีสาน",
+    "expectKeywords": ["บายศรี"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q12",
+    "question": "สายสิญจน์คืออะไร",
+    "expectKeywords": ["สายสิญจน์", "ด้าย"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q13",
+    "question": "ฮีต 12 มีอะไรบ้าง",
+    "expectKeywords": ["ฮีต", "เดือน"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q14",
+    "question": "บุญกฐินต่างกับผ้าป่าอย่างไร",
+    "expectKeywords": ["กฐิน", "ผ้าป่า"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q15",
+    "question": "ตามั่นคำทองคืออะไรในพิธีขึ้นบ้านใหม่",
+    "expectCeremonyId": "housewarming",
+    "expectKeywords": ["ตามั่น", "ค้ำคูณ"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q16",
+    "question": "น้ำมนต์ใช้ทำอะไรได้บ้าง",
+    "expectKeywords": ["น้ำมนต์"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q17",
+    "question": "เดือนหกมีบุญอะไร",
+    "expectKeywords": ["บั้งไฟ", "เดือนหก"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q18",
+    "question": "ขึ้นบ้านใหม่แบบไม่มีพระทำอย่างไร",
+    "expectCeremonyId": "housewarming",
+    "expectKeywords": ["ตามั่น", "พราหมณ์", "ไม่มีพระ"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q19",
+    "question": "ประเพณีบูชาช้างเผือกแห่งอาณาจักรลุ่มน้ำสาละวินจัดอย่างไร?",
+    "mustRefuse": true
+  },
+  {
+    "id": "q20",
+    "question": "พิธีเปิดร้านกาแฟสายมูนอร์ดิกต้องเตรียมอะไรบ้าง?",
+    "mustRefuse": true
+  },
+  {
+    "id": "q21",
+    "question": "งานบวชต้องเตรียมไตรจีวรไหม",
+    "expectCeremonyId": "ordination",
+    "expectKeywords": ["บวช", "ไตร"],
+    "mustRefuse": false
+  },
+  {
+    "id": "q22",
+    "question": "เลี้ยงผีตาแฮกต้องมีไก่ต้มไหม",
+    "expectCeremonyId": "taHaek",
+    "expectKeywords": ["ตาแฮก", "ไก่"],
+    "mustRefuse": false
+  }
+]

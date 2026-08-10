@@ -1,0 +1,407 @@
+{
+  "evaluatedAt": "2026-08-10T01:06:14.232Z",
+  "total": 22,
+  "passed": 22,
+  "failed": 0,
+  "passRate": "100.0%",
+  "notes": [
+    "Retrieval Relevance: expectKeywords / expectCeremonyId ตรงกับ Top-K",
+    "Refuse when unknown: mustRefuse ควรได้คะแนนต่ำหรือไม่เจอ chunk",
+    "Answer Groundedness / LLM quality ต้องตรวจด้วยมือหรือผ่าน /api/chat เพิ่ม"
+  ],
+  "results": [
+    {
+      "id": "q01",
+      "question": "งานขึ้นบ้านใหม่ต้องเตรียมอะไรบ้าง?",
+      "mustRefuse": false,
+      "retrievedCount": 5,
+      "topScore": 0.9797,
+      "topKeywordScore": 1,
+      "topTitle": "บุญขึ้นบ้านใหม่ — ความหมาย",
+      "sources": [
+        "บุญขึ้นบ้านใหม่ — ความหมาย",
+        "งานสู่ขวัญ — ความหมาย",
+        "บุญขึ้นบ้านใหม่ — ขั้นตอนพิธี",
+        "บุญขึ้นบ้านใหม่ — ข้อห้ามและความเชื่อที่ควรระวัง",
+        "บุญขึ้นบ้านใหม่ — รูปแบบ ตามั่นคำทอง / ค้ำคูณเฮือน (ไม่มีพระ)"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q02",
+      "question": "ขันธ์ 5 คืออะไร?",
+      "mustRefuse": false,
+      "retrievedCount": 5,
+      "topScore": 0.9636,
+      "topKeywordScore": 1,
+      "topTitle": "ขันธ์ 5 — ความหมายและองค์ประกอบ",
+      "sources": [
+        "ขันธ์ 5 — ความหมายและองค์ประกอบ",
+        "บุญขึ้นบ้านใหม่ — รูปแบบ นิมนต์พระ (แบบร่วมสมัย)",
+        "งานบุญอายุ — รูปแบบ นิมนต์พระ (แบบร่วมสมัย)",
+        "งานบุญบวช — ของใช้ในพิธี",
+        "งานบุญเลี้ยงปู่ตา — ของใช้ในพิธี"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q03",
+      "question": "งานบวชมีขั้นตอนอะไรบ้าง?",
+      "mustRefuse": false,
+      "retrievedCount": 4,
+      "topScore": 0.578,
+      "topKeywordScore": 0.6,
+      "topTitle": "งานบุญบวช — ขั้นตอนพิธี",
+      "sources": [
+        "งานบุญบวช — ขั้นตอนพิธี",
+        "งานบุญบวช — ของใช้ในพิธี",
+        "งานบุญบวช — ข้อห้ามและความเชื่อที่ควรระวัง",
+        "งานบุญบวช — ความหมาย"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q04",
+      "question": "งานแต่งงานอีสานมีพิธีอะไร?",
+      "mustRefuse": false,
+      "retrievedCount": 5,
+      "topScore": 0.9784,
+      "topKeywordScore": 1,
+      "topTitle": "งานแต่งงานอีสาน — ความหมาย",
+      "sources": [
+        "งานแต่งงานอีสาน — ความหมาย",
+        "ธูป — ความหมายและองค์ประกอบ",
+        "มัดหญ้าคา — ความหมายและองค์ประกอบ",
+        "ขันน้ำมนต์ — ความหมายและองค์ประกอบ",
+        "ขันธ์ 5 — ความหมายและองค์ประกอบ"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q05",
+      "question": "บุญกองข้าวคืออะไร?",
+      "mustRefuse": false,
+      "retrievedCount": 4,
+      "topScore": 0.9723,
+      "topKeywordScore": 1,
+      "topTitle": "งานบุญกองข้าว — ความหมาย",
+      "sources": [
+        "งานบุญกองข้าว — ความหมาย",
+        "งานบุญกองข้าว — ข้อห้ามและความเชื่อที่ควรระวัง",
+        "งานบุญกองข้าว — ขั้นตอนพิธี",
+        "งานบุญกองข้าว — ของใช้ในพิธี"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q06",
+      "question": "งานสู่ขวัญใช้สิ่งของอะไร?",
+      "mustRefuse": false,
+      "retrievedCount": 5,
+      "topScore": 0.9822,
+      "topKeywordScore": 1,
+      "topTitle": "บายศรี — ความหมายและองค์ประกอบ",
+      "sources": [
+        "บายศรี — ความหมายและองค์ประกอบ",
+        "งานสู่ขวัญ — ความหมาย",
+        "สายสิญจน์ — ความหมายและองค์ประกอบ",
+        "งานสู่ขวัญ — ข้อห้ามและความเชื่อที่ควรระวัง",
+        "งานสู่ขวัญ — ของใช้ในพิธี"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q07",
+      "question": "บุญอายุมีความเชื่ออย่างไร?",
+      "mustRefuse": false,
+      "retrievedCount": 5,
+      "topScore": 0.9371,
+      "topKeywordScore": 1,
+      "topTitle": "งานบุญอัฐิ — ข้อห้ามและความเชื่อที่ควรระวัง",
+      "sources": [
+        "งานบุญอัฐิ — ข้อห้ามและความเชื่อที่ควรระวัง",
+        "งานบุญเลี้ยงปู่ตา — ข้อห้ามและความเชื่อที่ควรระวัง",
+        "ประเพณีเลี้ยงผีตาแฮก — ข้อห้ามและความเชื่อที่ควรระวัง",
+        "บุญขึ้นบ้านใหม่ — ข้อห้ามและความเชื่อที่ควรระวัง",
+        "งานบุญอายุ — ข้อห้ามและความเชื่อที่ควรระวัง"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q08",
+      "question": "งานเลี้ยงปู่ตามีองค์ประกอบอะไร?",
+      "mustRefuse": false,
+      "retrievedCount": 4,
+      "topScore": 0.9924,
+      "topKeywordScore": 1,
+      "topTitle": "งานบุญเลี้ยงปู่ตา — ความหมาย",
+      "sources": [
+        "งานบุญเลี้ยงปู่ตา — ความหมาย",
+        "งานบุญเลี้ยงปู่ตา — ของใช้ในพิธี",
+        "งานบุญเลี้ยงปู่ตา — ขั้นตอนพิธี",
+        "งานบุญเลี้ยงปู่ตา — ข้อห้ามและความเชื่อที่ควรระวัง"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q09",
+      "question": "บุญอัฐิคืออะไร?",
+      "mustRefuse": false,
+      "retrievedCount": 4,
+      "topScore": 0.5732,
+      "topKeywordScore": 0.6,
+      "topTitle": "งานบุญอัฐิ — ข้อห้ามและความเชื่อที่ควรระวัง",
+      "sources": [
+        "งานบุญอัฐิ — ข้อห้ามและความเชื่อที่ควรระวัง",
+        "งานบุญอัฐิ — ความหมาย",
+        "งานบุญอัฐิ — ของใช้ในพิธี",
+        "งานบุญอัฐิ — ขั้นตอนพิธี"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q10",
+      "question": "ผีตาแฮกเกี่ยวข้องกับอะไร?",
+      "mustRefuse": false,
+      "retrievedCount": 4,
+      "topScore": 0.9082,
+      "topKeywordScore": 0.92,
+      "topTitle": "ประเพณีเลี้ยงผีตาแฮก — ความหมาย",
+      "sources": [
+        "ประเพณีเลี้ยงผีตาแฮก — ความหมาย",
+        "ประเพณีเลี้ยงผีตาแฮก — ข้อห้ามและความเชื่อที่ควรระวัง",
+        "ประเพณีเลี้ยงผีตาแฮก — ขั้นตอนพิธี",
+        "ประเพณีเลี้ยงผีตาแฮก — ของใช้ในพิธี"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q11",
+      "question": "บายศรีใช้ทำอะไรในงานบุญอีสาน",
+      "mustRefuse": false,
+      "retrievedCount": 5,
+      "topScore": 0.8771,
+      "topKeywordScore": 0.88,
+      "topTitle": "บายศรี — ความหมายและองค์ประกอบ",
+      "sources": [
+        "บายศรี — ความหมายและองค์ประกอบ",
+        "งานสู่ขวัญ — ความหมาย",
+        "งานบุญอายุ — ของใช้ในพิธี",
+        "งานบุญอายุ — รูปแบบ นิมนต์พระ (แบบร่วมสมัย)",
+        "งานบุญอายุ — รูปแบบ สะเดาะเคราะห์ / หมอพราหมณ์ (ไม่มีพระ)"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q12",
+      "question": "สายสิญจน์คืออะไร",
+      "mustRefuse": false,
+      "retrievedCount": 5,
+      "topScore": 0.9753,
+      "topKeywordScore": 1,
+      "topTitle": "สายสิญจน์ — ความหมายและองค์ประกอบ",
+      "sources": [
+        "สายสิญจน์ — ความหมายและองค์ประกอบ",
+        "น้ำมนต์ — ความหมายและองค์ประกอบ",
+        "ขันน้ำมนต์ — ความหมายและองค์ประกอบ",
+        "งานสู่ขวัญ — ของใช้ในพิธี",
+        "งานบุญบวช — ของใช้ในพิธี"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q13",
+      "question": "ฮีต 12 มีอะไรบ้าง",
+      "mustRefuse": false,
+      "retrievedCount": 5,
+      "topScore": 0.9654,
+      "topKeywordScore": 1,
+      "topTitle": "ฮีต 12 — ภาพรวม",
+      "sources": [
+        "ฮีต 12 — ภาพรวม",
+        "เดือนยี่ — บุญคูณลาน",
+        "เดือนอ้าย — บุญเข้ากรรม",
+        "เดือนสิบเอ็ด — บุญออกพรรษา",
+        "เดือนเก้า — บุญข้าวประดับดิน"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q14",
+      "question": "บุญกฐินต่างกับผ้าป่าอย่างไร",
+      "mustRefuse": false,
+      "retrievedCount": 3,
+      "topScore": 0.8751,
+      "topKeywordScore": 0.88,
+      "topTitle": "ฮีต 12 — ภาพรวม",
+      "sources": [
+        "ฮีต 12 — ภาพรวม",
+        "เปรียบเทียบกฐินกับผ้าป่า",
+        "เดือนสิบสอง — บุญกฐิน"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q15",
+      "question": "ตามั่นคำทองคืออะไรในพิธีขึ้นบ้านใหม่",
+      "mustRefuse": false,
+      "retrievedCount": 5,
+      "topScore": 0.9889,
+      "topKeywordScore": 1,
+      "topTitle": "บุญขึ้นบ้านใหม่ — ความหมาย",
+      "sources": [
+        "บุญขึ้นบ้านใหม่ — ความหมาย",
+        "งานสู่ขวัญ — ความหมาย",
+        "บุญขึ้นบ้านใหม่ — ขั้นตอนพิธี",
+        "บุญขึ้นบ้านใหม่ — ข้อห้ามและความเชื่อที่ควรระวัง",
+        "บุญขึ้นบ้านใหม่ — รูปแบบ ตามั่นคำทอง / ค้ำคูณเฮือน (ไม่มีพระ)"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q16",
+      "question": "น้ำมนต์ใช้ทำอะไรได้บ้าง",
+      "mustRefuse": false,
+      "retrievedCount": 3,
+      "topScore": 0.8698,
+      "topKeywordScore": 0.88,
+      "topTitle": "น้ำมนต์ — ความหมายและองค์ประกอบ",
+      "sources": [
+        "น้ำมนต์ — ความหมายและองค์ประกอบ",
+        "บุญขึ้นบ้านใหม่ — รูปแบบ นิมนต์พระ (แบบร่วมสมัย)",
+        "งานบุญอายุ — รูปแบบ นิมนต์พระ (แบบร่วมสมัย)"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q17",
+      "question": "เดือนหกมีบุญอะไร",
+      "mustRefuse": false,
+      "retrievedCount": 2,
+      "topScore": 0.8635,
+      "topKeywordScore": 0.88,
+      "topTitle": "ฮีต 12 — ภาพรวม",
+      "sources": [
+        "ฮีต 12 — ภาพรวม",
+        "เดือนหก — บุญบั้งไฟ"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q18",
+      "question": "ขึ้นบ้านใหม่แบบไม่มีพระทำอย่างไร",
+      "mustRefuse": false,
+      "retrievedCount": 5,
+      "topScore": 0.9918,
+      "topKeywordScore": 1,
+      "topTitle": "งานสู่ขวัญ — ความหมาย",
+      "sources": [
+        "งานสู่ขวัญ — ความหมาย",
+        "บุญขึ้นบ้านใหม่ — ความหมาย",
+        "งานบุญอายุ — ความหมาย",
+        "บุญขึ้นบ้านใหม่ — รูปแบบ นิมนต์พระ (แบบร่วมสมัย)",
+        "บุญขึ้นบ้านใหม่ — ของใช้ในพิธี"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q19",
+      "question": "ประเพณีบูชาช้างเผือกแห่งอาณาจักรลุ่มน้ำสาละวินจัดอย่างไร?",
+      "mustRefuse": true,
+      "retrievedCount": 0,
+      "topScore": 0,
+      "topKeywordScore": 0,
+      "topTitle": null,
+      "sources": [],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q20",
+      "question": "พิธีเปิดร้านกาแฟสายมูนอร์ดิกต้องเตรียมอะไรบ้าง?",
+      "mustRefuse": true,
+      "retrievedCount": 0,
+      "topScore": 0,
+      "topKeywordScore": 0,
+      "topTitle": null,
+      "sources": [],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q21",
+      "question": "งานบวชต้องเตรียมไตรจีวรไหม",
+      "mustRefuse": false,
+      "retrievedCount": 5,
+      "topScore": 0.8631,
+      "topKeywordScore": 0.92,
+      "topTitle": "งานบุญบวช — ของใช้ในพิธี",
+      "sources": [
+        "งานบุญบวช — ของใช้ในพิธี",
+        "งานบุญบวช — ความหมาย",
+        "งานบุญบวช — ขั้นตอนพิธี",
+        "งานบุญอัฐิ — ความหมาย",
+        "งานบุญอัฐิ — ของใช้ในพิธี"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    },
+    {
+      "id": "q22",
+      "question": "เลี้ยงผีตาแฮกต้องมีไก่ต้มไหม",
+      "mustRefuse": false,
+      "retrievedCount": 4,
+      "topScore": 0.9799,
+      "topKeywordScore": 1,
+      "topTitle": "ประเพณีเลี้ยงผีตาแฮก — ความหมาย",
+      "sources": [
+        "ประเพณีเลี้ยงผีตาแฮก — ความหมาย",
+        "ประเพณีเลี้ยงผีตาแฮก — ขั้นตอนพิธี",
+        "ประเพณีเลี้ยงผีตาแฮก — ของใช้ในพิธี",
+        "ประเพณีเลี้ยงผีตาแฮก — ข้อห้ามและความเชื่อที่ควรระวัง"
+      ],
+      "relevanceOk": true,
+      "refuseOk": true,
+      "pass": true
+    }
+  ]
+}

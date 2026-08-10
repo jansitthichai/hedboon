@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
 import { useLocation } from 'react-router-dom'
 import { askHedBoon, type AIProvider } from '../lib/ai'
+import type { RagSource } from '../lib/rag/types'
 
 const presets = [
   'ยายบอกให้เตรียมขันธ์ 5 คืออะไร',
@@ -11,9 +12,9 @@ const presets = [
 ]
 
 const providerLabel: Record<AIProvider, string> = {
-  openai: 'ChatGPT',
-  gemini: 'Gemini',
-  offline: 'ความรู้ในเครื่อง',
+  openai: 'HedBoon AI (ChatGPT + RAG)',
+  gemini: 'HedBoon AI (Gemini + RAG)',
+  offline: 'ความรู้ในเครื่อง + Retrieval (ไม่ได้ใช้ LLM)',
 }
 
 type Role = 'user' | 'assistant'
@@ -23,12 +24,14 @@ interface ChatMessage {
   role: Role
   text: string
   provider?: AIProvider
+  sources?: RagSource[]
+  chunkCount?: number
 }
 
 const welcome: ChatMessage = {
   id: 'welcome',
   role: 'assistant',
-  text: 'สวัสดีครับ ผม HedBoon ผู้ช่วยเรื่องงานบุญและประเพณีอีสาน\nอยากรู้เรื่องไหน คุยมาได้เลยครับ — เช่น ขันธ์ 5 คืออะไร หรือขึ้นบ้านใหม่ต้องเตรียมอะไรบ้าง',
+  text: 'สวัสดีครับ ผม HedBoon ผู้ช่วยเรื่องงานบุญและประเพณีอีสาน\nระบบนี้ค้นจากฐานความรู้ก่อนแล้วค่อยตอบ (RAG) — ลองถาม เช่น ขันธ์ 5 คืออะไร หรือขึ้นบ้านใหม่ต้องเตรียมอะไรบ้าง',
 }
 
 function newId() {
@@ -84,7 +87,14 @@ export function AskPage() {
       const res = await askHedBoon(text)
       setMessages((prev) => [
         ...prev,
-        { id: newId(), role: 'assistant', text: res.text, provider: res.provider },
+        {
+          id: newId(),
+          role: 'assistant',
+          text: res.text,
+          provider: res.provider,
+          sources: res.sources,
+          chunkCount: res.chunkCount,
+        },
       ])
     } catch (err) {
       setError(err instanceof Error ? err.message : 'คุยไม่สำเร็จ ลองใหม่อีกครั้งนะครับ')
@@ -111,10 +121,10 @@ export function AskPage() {
   return (
     <div className="mx-auto flex max-w-3xl flex-col animate-rise" style={{ minHeight: 'min(70vh, 720px)' }}>
       <div className="mb-4 shrink-0">
-        <p className="section-kicker">คุยกับ AI</p>
+        <p className="section-kicker">คุยกับ AI · RAG</p>
         <h1 className="font-display mt-2 text-3xl text-[var(--indigo)] md:text-4xl">แชตกับ HedBoon</h1>
         <p className="mt-2 text-[var(--muted)]">
-          คุยเรื่องประเพณี พิธีกรรม หรือของใช้ในงานบุญได้เลย — เหมือนถามเพื่อนที่รู้เรื่องอีสาน
+          ค้นจากฐานความรู้ประเพณีอีสานก่อน แล้วค่อยให้ AI สรุปคำตอบ พร้อมแสดงแหล่งข้อมูลที่ใช้
         </p>
       </div>
 
@@ -124,7 +134,7 @@ export function AskPage() {
           <div className="min-w-0">
             <p className="font-display text-lg leading-none text-[var(--indigo)]">HedBoon</p>
             <p className="mt-1 text-xs text-[var(--muted)]">
-              {loading ? 'กำลังพิมพ์...' : 'ออนไลน์ · พร้อมคุยเรื่องงานบุญ'}
+              {loading ? 'กำลังค้นความรู้และตอบ...' : 'RAG · พร้อมคุยเรื่องงานบุญ'}
             </p>
           </div>
         </div>
@@ -147,10 +157,21 @@ export function AskPage() {
                   <p className="mb-1 text-[11px] font-medium text-[var(--muted)]">HedBoon</p>
                 )}
                 <div className="prose-answer whitespace-pre-wrap">{renderChatText(msg.text)}</div>
+
                 {msg.role === 'assistant' && msg.provider && (
-                  <p className="mt-2 text-[10px] text-[var(--muted)]">
-                    ตอบโดย {providerLabel[msg.provider]}
-                  </p>
+                  <div className="mt-2 space-y-1 border-t border-[var(--line)]/80 pt-2 text-[10px] text-[var(--muted)]">
+                    <p>ตอบโดย: {providerLabel[msg.provider]}</p>
+                    {typeof msg.chunkCount === 'number' && msg.chunkCount > 0 && (
+                      <p>แหล่งข้อมูลที่ใช้: {msg.chunkCount} รายการ</p>
+                    )}
+                    {msg.sources && msg.sources.length > 0 && (
+                      <ol className="mt-1 list-decimal space-y-0.5 pl-4">
+                        {msg.sources.map((s) => (
+                          <li key={s.chunkId}>{s.title}</li>
+                        ))}
+                      </ol>
+                    )}
+                  </div>
                 )}
               </div>
             </div>
