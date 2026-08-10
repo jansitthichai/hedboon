@@ -43,7 +43,7 @@ function renderChatText(text: string) {
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
       return (
-        <strong key={i} className="font-semibold text-[var(--indigo)]">
+        <strong key={i} className="font-semibold text-[var(--pink-hot)]">
           {part.slice(2, -2)}
         </strong>
       )
@@ -122,7 +122,7 @@ export function AskPage() {
     <div className="mx-auto flex max-w-3xl flex-col animate-rise" style={{ minHeight: 'min(70vh, 720px)' }}>
       <div className="mb-4 shrink-0">
         <p className="section-kicker">คุยกับ AI · RAG</p>
-        <h1 className="font-display mt-2 text-3xl text-[var(--indigo)] md:text-4xl">แชตกับ HedBoon</h1>
+        <h1 className="font-display mt-2 text-3xl text-[var(--pink-hot)] md:text-4xl">💬 แชตกับ HedBoon</h1>
         <p className="mt-2 text-[var(--muted)]">
           ค้นจากฐานความรู้ประเพณีอีสานก่อน แล้วค่อยให้ AI สรุปคำตอบ พร้อมแสดงแหล่งข้อมูลที่ใช้
         </p>
@@ -132,7 +132,7 @@ export function AskPage() {
         <div className="flex items-center gap-3 border-b border-[var(--line)] px-4 py-3 md:px-5">
           <span className="logo-mark grid h-10 w-10 place-items-center font-display text-base">เฮ</span>
           <div className="min-w-0">
-            <p className="font-display text-lg leading-none text-[var(--indigo)]">HedBoon</p>
+            <p className="font-display text-lg leading-none text-[var(--purple)]">HedBoon 🤖</p>
             <p className="mt-1 text-xs text-[var(--muted)]">
               {loading ? 'กำลังค้นความรู้และตอบ...' : 'RAG · พร้อมคุยเรื่องงานบุญ'}
             </p>
@@ -149,8 +149,8 @@ export function AskPage() {
                 className={[
                   'max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed shadow-sm md:max-w-[78%]',
                   msg.role === 'user'
-                    ? 'rounded-br-md bg-[var(--indigo)] text-white'
-                    : 'rounded-bl-md border border-[var(--line)] bg-white/95 text-[var(--ink)]',
+                    ? 'chat-bubble-user rounded-br-md bg-gradient-to-br from-[var(--purple)] to-[var(--pink)] text-white'
+                    : 'chat-bubble-ai rounded-bl-md bg-white text-[var(--ink)]',
                 ].join(' ')}
               >
                 {msg.role === 'assistant' && (
@@ -183,7 +183,7 @@ export function AskPage() {
 
           {loading && (
             <div className="flex justify-start">
-              <div className="rounded-2xl rounded-bl-md border border-[var(--line)] bg-white/95 px-4 py-3 shadow-sm">
+              <div className="chat-bubble-ai rounded-2xl rounded-bl-md bg-white px-4 py-3">
                 <div className="flex items-center gap-1.5">
                   <span className="chat-dot" />
                   <span className="chat-dot chat-dot-delay-1" />
@@ -194,7 +194,7 @@ export function AskPage() {
           )}
 
           {error && (
-            <div className="rounded-xl border border-[#a33b2f]/30 bg-[#a33b2f]/5 px-3 py-2 text-sm text-[#a33b2f]">
+            <div className="rounded-xl border-2 border-[var(--red)] bg-[#ffe6f0] px-3 py-2 text-sm text-[var(--red)] shadow-[2px_2px_0_var(--red)]">
               {error}
             </div>
           )}
@@ -208,7 +208,7 @@ export function AskPage() {
                     key={p}
                     type="button"
                     onClick={() => void sendMessage(p)}
-                    className="rounded-full border border-[var(--line)] bg-white/90 px-3 py-1.5 text-left text-xs text-[var(--indigo)] transition hover:border-[var(--gold)] hover:bg-[var(--mist)]"
+                    className="rounded-full border-2 border-[var(--ink)] bg-white px-3 py-1.5 text-left text-xs font-semibold text-[var(--purple)] shadow-[2px_2px_0_var(--cyan)] transition hover:-translate-y-0.5 hover:shadow-[3px_3px_0_var(--pink)]"
                   >
                     {p}
                   </button>
@@ -232,12 +232,12 @@ export function AskPage() {
               onKeyDown={onKeyDown}
               rows={1}
               placeholder="พิมพ์ข้อความ... (Enter เพื่อส่ง)"
-              className="max-h-32 min-h-[44px] flex-1 resize-none rounded-2xl border border-[var(--line)] bg-white px-3.5 py-2.5 text-sm outline-none focus:border-[var(--gold)]"
+              className="input-field max-h-32 min-h-[44px] flex-1 resize-none rounded-2xl px-3.5 py-2.5 text-sm"
             />
             <button
               type="submit"
               disabled={loading || !draft.trim()}
-              className="shrink-0 rounded-2xl bg-[var(--indigo)] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--indigo-mid)] disabled:opacity-50"
+              className="btn-primary shrink-0 rounded-2xl px-4 py-2.5 text-sm disabled:opacity-50"
             >
               ส่ง
             </button>

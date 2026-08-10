@@ -18,10 +18,10 @@ export function Layout() {
               <span>เฮ</span>
             </span>
             <span>
-              <span className="font-display block text-lg leading-none text-[var(--indigo)]">
-                HedBoon
+              <span className="font-display block text-lg leading-none text-[var(--pink-hot)]">
+                HedBoon ✨
               </span>
-              <span className="mt-0.5 block text-xs tracking-wide text-[var(--muted)]">
+              <span className="mt-0.5 block text-xs font-semibold tracking-wide text-[var(--purple)]">
                 เฮ็ดบุญ · ผู้ช่วยประเพณีอีสาน
               </span>
             </span>
@@ -34,7 +34,7 @@ export function Layout() {
                 to={link.to}
                 end={link.end}
                 className={({ isActive }) =>
-                  ['nav-pill', isActive ? 'nav-pill-active' : 'text-[var(--muted)] hover:bg-[var(--mist)] hover:text-[var(--indigo)]'].join(
+                  ['nav-pill', isActive ? 'nav-pill-active' : 'text-[var(--muted)] hover:bg-[var(--mist)] hover:text-[var(--pink-hot)]'].join(
                     ' ',
                   )
                 }
@@ -56,7 +56,7 @@ export function Layout() {
                   'shrink-0 rounded-lg px-3 py-1.5 text-xs transition',
                   isActive
                     ? 'nav-pill-active'
-                    : 'bg-white/80 text-[var(--muted)] shadow-sm',
+                    : 'border-2 border-[var(--line)] bg-white text-[var(--muted)] shadow-[2px_2px_0_var(--cyan)]',
                 ].join(' ')
               }
             >
@@ -74,7 +74,7 @@ export function Layout() {
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-sm text-[var(--muted)]">
           <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
             <p>
-              <span className="font-display text-[var(--indigo)]">HedBoon AI</span>
+              <span className="font-display text-[var(--pink-hot)]">HedBoon AI ✨</span>
               {' — '}
               ผู้ช่วยวางแผนประเพณีและพิธีกรรมอีสาน
             </p>
