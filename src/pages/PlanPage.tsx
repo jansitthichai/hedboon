@@ -90,7 +90,7 @@ export function PlanPage() {
     <div className="space-y-8 animate-rise">
       <div>
         <p className="section-kicker">Ceremony Planner</p>
-        <h1 className="font-display mt-2 text-3xl text-[var(--pink-hot)] md:text-4xl">📋 วางแผนงานบุญ</h1>
+        <h1 className="font-display mt-2 text-3xl text-[var(--primary)] md:text-4xl">วางแผนงานบุญ</h1>
         <p className="mt-2 max-w-2xl text-[var(--muted)]">
           เลือกพิธีและจำนวนแขก ระบบจะสร้างขั้นตอน Checklist ปริมาณของใช้ และกำหนดการให้อัตโนมัติ
           บางพิธีไม่มีพระ เช่น เลี้ยงผีตาแฮก หรือขึ้นบ้านใหม่แบบตามั่นคำทอง
@@ -199,7 +199,7 @@ export function PlanPage() {
             <ol className="mt-4 space-y-3">
               {result.steps.map((step) => (
                 <li key={step.order} className="flex gap-3">
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border-2 border-[var(--ink)] bg-gradient-to-br from-[var(--pink)] to-[var(--purple)] text-sm font-bold text-white shadow-[2px_2px_0_var(--ink)]">
+                  <span className="step-badge">
                     {step.order}
                   </span>
                   <div>
@@ -217,7 +217,7 @@ export function PlanPage() {
               <ul className="mt-3 space-y-2">
                 {result.checklist.map((item) => (
                   <li key={item.id} className="flex items-start gap-2 text-sm">
-                    <span className="mt-0.5 text-[#2f6b4f]">✓</span>
+                    <span className="mt-0.5 text-[var(--accent)]">✓</span>
                     <span>
                       <span className="text-[var(--ink)]">{item.name}</span>
                       {item.note && <span className="text-[var(--muted)]"> — {item.note}</span>}
@@ -265,7 +265,7 @@ export function PlanPage() {
               </dl>
 
               {result.estimatedBudget && (
-                <div className="mt-4 rounded-xl border-2 border-[var(--ink)] bg-[var(--yellow)]/30 p-3 text-sm shadow-[3px_3px_0_var(--orange)]">
+                <div className="mt-4 stat-box text-sm">
                   <p className="font-medium text-[var(--ink)]">
                     ประมาณการงบ ~ {result.estimatedBudget.total.toLocaleString('th-TH')} บาท
                   </p>
@@ -279,7 +279,7 @@ export function PlanPage() {
             <h3 className="font-display text-xl text-[var(--ink)]">กำหนดการวันงาน</h3>
             <div className="mt-4 space-y-3">
               {result.schedule.map((slot) => (
-                <div key={`${slot.time}-${slot.title}`} className="grid gap-1 border-l-4 border-[var(--pink)] pl-4 md:grid-cols-[88px_1fr]">
+                <div key={`${slot.time}-${slot.title}`} className="grid gap-1 border-l-2 border-[var(--accent)] pl-4 md:grid-cols-[88px_1fr]">
                   <p className="font-semibold text-[var(--ink)]">{slot.time}</p>
                   <div>
                     <p className="font-medium text-[var(--ink)]">{slot.title}</p>
@@ -290,8 +290,8 @@ export function PlanPage() {
             </div>
           </section>
 
-          <section className="rounded-2xl border-3 border-[var(--red)] bg-[#ffe6f0] p-5 shadow-[4px_4px_0_var(--red)]">
-            <h3 className="font-display text-xl text-[var(--red)]">⚠️ ข้อควรระวัง / ข้อห้าม</h3>
+          <section className="alert-box">
+            <h3 className="font-display text-xl text-[var(--danger)]">ข้อควรระวัง / ข้อห้าม</h3>
             <ul className="mt-3 space-y-2 text-sm text-[var(--muted)]">
               {result.taboos.map((t) => (
                 <li key={t}>• {t}</li>

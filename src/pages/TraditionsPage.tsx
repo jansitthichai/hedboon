@@ -35,7 +35,7 @@ function monkModeLabel(mode: Ceremony['monkMode']) {
 
 function monkModeBadgeClass(mode: Ceremony['monkMode']) {
   if (mode === 'none') return 'bg-[var(--orange)]/20 text-[var(--orange)]'
-  if (mode === 'optional') return 'bg-[var(--purple)]/15 text-[var(--purple)]'
+  if (mode === 'optional') return 'bg-[var(--mist)] text-[var(--primary)]'
   return 'bg-[var(--field)]/20 text-[#007a33]'
 }
 
@@ -71,8 +71,8 @@ function TraditionIndex() {
     <div className="space-y-10 animate-rise">
       <header>
         <p className="section-kicker">คลังความรู้</p>
-        <h1 className="font-display mt-2 text-3xl text-[var(--pink-hot)] md:text-4xl">
-          📚 งานบุญ / ประเพณี
+        <h1 className="font-display mt-2 text-3xl text-[var(--primary)] md:text-4xl">
+          งานบุญ / ประเพณี
         </h1>
         <p className="mt-2 max-w-2xl text-[var(--muted)]">
           อ่านและค้นหาข้อมูลพิธีกรรม ของใช้ และความเชื่อจากคลังความรู้ HedBoon
@@ -102,10 +102,10 @@ function TraditionIndex() {
               type="button"
               onClick={() => setFilter(id)}
               className={[
-                'rounded-full border-2 px-3 py-1 text-xs font-bold transition',
+                'rounded-full border px-3 py-1 text-xs font-medium transition',
                 filter === id
-                  ? 'border-[var(--ink)] bg-[var(--yellow)] text-[var(--purple)] shadow-[2px_2px_0_var(--ink)]'
-                  : 'border-[var(--line)] bg-white text-[var(--muted)] hover:border-[var(--pink)]',
+                  ? 'border-[var(--primary)] bg-[var(--primary)] text-white'
+                  : 'border-[var(--line)] bg-white text-[var(--muted)] hover:border-[var(--primary-light)]',
               ].join(' ')}
             >
               {label}
@@ -140,10 +140,10 @@ function TraditionIndex() {
                   {monkModeLabel(c.monkMode)}
                 </span>
               </div>
-              <h3 className="font-display relative z-[1] mt-3 text-xl text-[var(--ink)] group-hover:text-[var(--pink-hot)]">
+              <h3 className="font-display relative z-[1] mt-3 text-xl text-[var(--ink)] group-hover:text-[var(--primary)]">
                 {c.nameTh}
               </h3>
-              <p className="relative z-[1] text-xs font-semibold text-[var(--purple)]">{c.nameIsan}</p>
+              <p className="relative z-[1] text-xs text-[var(--accent-warm)]">{c.nameIsan}</p>
               <p className="relative z-[1] mt-2 line-clamp-3 text-sm leading-relaxed text-[var(--muted)]">
                 {c.summary}
               </p>
@@ -174,7 +174,7 @@ function TraditionIndex() {
       <section className="panel-isan p-5 md:p-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="font-display text-2xl text-[var(--pink-hot)]">📅 ฮีต 12</h2>
+            <h2 className="font-display text-2xl text-[var(--primary)]">ฮีต 12</h2>
             <p className="mt-1 max-w-xl text-sm text-[var(--muted)]">
               บุญประจำเดือนของชาวอีสาน — ดู timeline แบบโต้ตอบได้ที่เมนู ฮีต 12
             </p>
@@ -247,7 +247,7 @@ function CeremonyDetail({ ceremonyId }: { ceremonyId: CeremonyId }) {
   return (
     <article className="space-y-8 animate-rise">
       <nav className="text-sm">
-        <Link to="/traditions" className="text-[var(--purple)] hover:text-[var(--pink-hot)]">
+        <Link to="/traditions" className="text-[var(--primary-light)] hover:text-[var(--primary)]">
           ← กลับคลังความรู้
         </Link>
       </nav>
@@ -257,10 +257,10 @@ function CeremonyDetail({ ceremonyId }: { ceremonyId: CeremonyId }) {
           <span className="text-5xl">{ceremonyEmoji[ceremonyId]}</span>
           <div className="min-w-0 flex-1">
             <p className="section-kicker">เรื่องเล่าประเพณี</p>
-            <h1 className="font-display mt-1 text-3xl text-[var(--pink-hot)] md:text-4xl">
+            <h1 className="font-display mt-1 text-3xl text-[var(--primary)] md:text-4xl">
               {ceremony.nameTh}
             </h1>
-            <p className="mt-1 text-base font-semibold text-[var(--purple)]">{ceremony.nameIsan}</p>
+            <p className="mt-1 text-base text-[var(--accent-warm)]">{ceremony.nameIsan}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <span
                 className={[
@@ -327,7 +327,7 @@ function CeremonyDetail({ ceremonyId }: { ceremonyId: CeremonyId }) {
         <ol className="mt-5 space-y-4">
           {ceremony.steps.map((step) => (
             <li key={step.order} className="flex gap-4">
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border-2 border-[var(--ink)] bg-gradient-to-br from-[var(--cyan)] to-[var(--purple)] text-sm font-bold text-white shadow-[2px_2px_0_var(--ink)]">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--primary)] text-sm font-semibold text-white">
                 {step.order}
               </span>
               <div>
@@ -393,8 +393,8 @@ function CeremonyDetail({ ceremonyId }: { ceremonyId: CeremonyId }) {
         </section>
       )}
 
-      <section className="rounded-2xl border-3 border-[var(--red)] bg-[#ffe6f0] p-5 shadow-[4px_4px_0_var(--red)]">
-        <h2 className="font-display text-xl text-[var(--red)]">ข้อห้าม / ข้อควรระวัง</h2>
+      <section className="alert-box">
+        <h2 className="font-display text-xl text-[var(--danger)]">ข้อห้าม / ข้อควรระวัง</h2>
         <ul className="mt-3 space-y-2 text-sm text-[var(--muted)]">
           {ceremony.taboos.map((t) => (
             <li key={t}>• {t}</li>
@@ -436,7 +436,7 @@ export function TraditionsPage() {
   if (ceremonyId && !isCeremonyId(ceremonyId)) {
     return (
       <div className="panel-isan p-8 text-center animate-rise">
-        <p className="font-display text-2xl text-[var(--pink-hot)]">ไม่พบข้อมูลพิธีนี้</p>
+        <p className="font-display text-2xl text-[var(--primary)]">ไม่พบข้อมูลพิธีนี้</p>
         <button type="button" onClick={() => navigate('/traditions')} className="btn-primary mt-4">
           กลับคลังความรู้
         </button>

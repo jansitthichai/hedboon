@@ -12,11 +12,11 @@ import 'reactflow/dist/style.css'
 import { graphEdges, graphNodes } from '../lib/knowledge'
 
 const kindColor: Record<string, string> = {
-  item: '#9d00ff',
-  ceremony: '#00c853',
-  belief: '#ff9500',
-  component: '#00d4ff',
-  taboo: '#ff006e',
+  item: '#1e3a5f',
+  ceremony: '#2f6b4f',
+  belief: '#8a6a2f',
+  component: '#3d6b8c',
+  taboo: '#9a3d2e',
 }
 
 export function GraphPage() {
@@ -37,14 +37,14 @@ export function GraphPage() {
           },
           data: { label: n.label },
           style: {
-            background: kindColor[n.kind] ?? '#6a00ff',
+            background: kindColor[n.kind] ?? '#1e3a5f',
             color: '#fff',
-            border: selectedId === n.id ? '3px solid #ffe600' : '2px solid #2d1b4e',
-            borderRadius: 12,
+            border: selectedId === n.id ? '2px solid #b8941f' : '1px solid rgba(255,255,255,0.2)',
+            borderRadius: 10,
             padding: '8px 12px',
             fontSize: 13,
-            fontWeight: 600,
-            boxShadow: '3px 3px 0 #2d1b4e',
+            fontWeight: 500,
+            boxShadow: '0 2px 6px rgba(28,40,54,0.12)',
             width: 'auto',
             minWidth: 90,
           },
@@ -60,9 +60,9 @@ export function GraphPage() {
         source: e.source,
         target: e.target,
         label: e.label,
-        markerEnd: { type: MarkerType.ArrowClosed, color: '#9d00ff' },
-        style: { stroke: '#ff2d95', strokeWidth: 2 },
-        labelStyle: { fill: '#7b5299', fontSize: 11, fontWeight: 600 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#5a6573' },
+        style: { stroke: '#9aabb8', strokeWidth: 1.5 },
+        labelStyle: { fill: '#5a6573', fontSize: 11 },
       })),
     [],
   )
@@ -78,7 +78,7 @@ export function GraphPage() {
     <div className="space-y-6 animate-rise">
       <div>
         <p className="section-kicker">Knowledge Graph</p>
-        <h1 className="font-display mt-2 text-3xl text-[var(--pink-hot)] md:text-4xl">🕸️ แผนภาพความรู้</h1>
+        <h1 className="font-display mt-2 text-3xl text-[var(--primary)] md:text-4xl">แผนภาพความรู้</h1>
         <p className="mt-2 max-w-2xl text-[var(--muted)]">
           แผนภาพเชื่อมโยงของใช้ พิธี ความเชื่อ และข้อห้าม — กดโหนดเพื่อดูรายละเอียด
         </p>
@@ -93,13 +93,13 @@ export function GraphPage() {
             fitView
             attributionPosition="bottom-left"
           >
-            <Background color="#e0b3ff" gap={18} />
+            <Background color="#dde3ea" gap={18} />
             <MiniMap
               nodeColor={(n) => {
                 const raw = graphNodes.find((g) => g.id === n.id)
                 return raw ? kindColor[raw.kind] : '#6a00ff'
               }}
-              maskColor="rgba(157,0,255,0.08)"
+              maskColor="rgba(30,58,95,0.06)"
             />
             <Controls />
           </ReactFlow>
@@ -107,11 +107,11 @@ export function GraphPage() {
 
         <aside className="panel-isan p-5">
           <p className="text-xs uppercase tracking-wider text-[var(--muted)]">เลือกอยู่</p>
-          <h2 className="mt-1 font-display text-2xl text-[var(--purple)]">{selected?.label ?? '-'}</h2>
-          <p className="mt-1 text-xs font-bold text-[var(--orange)]">{selected?.kind}</p>
+          <h2 className="mt-1 font-display text-2xl text-[var(--primary)]">{selected?.label ?? '-'}</h2>
+          <p className="mt-1 text-xs font-medium text-[var(--accent-warm)]">{selected?.kind}</p>
           <p className="mt-3 text-sm text-[var(--muted)]">{selected?.detail ?? 'ไม่มีคำอธิบายเพิ่มเติม'}</p>
 
-          <h3 className="mt-5 text-sm font-bold text-[var(--pink-hot)]">ความเชื่อมโยง</h3>
+          <h3 className="mt-5 text-sm font-semibold text-[var(--primary)]">ความเชื่อมโยง</h3>
           <ul className="mt-2 space-y-2 text-sm text-[var(--muted)]">
             {related.map((e) => {
               const otherId = e.source === selectedId ? e.target : e.source
@@ -121,7 +121,7 @@ export function GraphPage() {
                   <button
                     type="button"
                     onClick={() => setSelectedId(otherId)}
-                    className="text-left font-medium hover:text-[var(--pink-hot)]"
+                    className="text-left hover:text-[var(--primary-light)]"
                   >
                     {e.label ? `${e.label} → ` : ''}
                     {other?.label}
@@ -133,19 +133,19 @@ export function GraphPage() {
 
           <div className="mt-6 space-y-1 text-xs text-[var(--muted)]">
             <p>
-              <span className="mr-1 inline-block h-2.5 w-2.5 rounded-full bg-[#9d00ff]" /> ของใช้
+              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#1e3a5f]" /> ของใช้
             </p>
             <p>
-              <span className="mr-1 inline-block h-2.5 w-2.5 rounded-full bg-[#00c853]" /> พิธี
+              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#2f6b4f]" /> พิธี
             </p>
             <p>
-              <span className="mr-1 inline-block h-2.5 w-2.5 rounded-full bg-[#ff9500]" /> ความเชื่อ
+              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#8a6a2f]" /> ความเชื่อ
             </p>
             <p>
-              <span className="mr-1 inline-block h-2.5 w-2.5 rounded-full bg-[#00d4ff]" /> ส่วนประกอบ
+              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#3d6b8c]" /> ส่วนประกอบ
             </p>
             <p>
-              <span className="mr-1 inline-block h-2.5 w-2.5 rounded-full bg-[#ff006e]" /> ข้อห้าม
+              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#9a3d2e]" /> ข้อห้าม
             </p>
           </div>
         </aside>
