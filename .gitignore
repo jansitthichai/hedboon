@@ -27,3 +27,7 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Generated serverless bundle (also rebuilt in npm run build)
+# Keep committed so Vercel always has a runnable /api/chat
+# api/chat.js
