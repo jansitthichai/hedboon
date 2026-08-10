@@ -1,4 +1,10 @@
-import { buildContext, buildUserPrompt, RAG_SYSTEM_PROMPT, toSources } from './context'
+import {
+  buildContext,
+  buildUserPrompt,
+  EXPERT_SYSTEM_PROMPT,
+  RAG_SYSTEM_PROMPT,
+  toSources,
+} from './context'
 import { embedTextsOpenAI, getEmbeddingMap, localEmbed } from './embeddings'
 import { retrieveChunks } from './retriever'
 import type {
@@ -14,6 +20,7 @@ async function callOpenAIChat(
   user: string,
   apiKey: string,
   model: string,
+  temperature = 0.3,
 ): Promise<string> {
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
@@ -23,7 +30,7 @@ async function callOpenAIChat(
     },
     body: JSON.stringify({
       model,
-      temperature: 0.2,
+      temperature,
       messages: [
         { role: 'system', content: system },
         { role: 'user', content: user },
@@ -47,6 +54,7 @@ async function callGeminiChat(
   user: string,
   apiKey: string,
   model: string,
+  temperature = 0.3,
 ): Promise<string> {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`
   const res = await fetch(url, {
@@ -54,7 +62,7 @@ async function callGeminiChat(
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       contents: [{ role: 'user', parts: [{ text: `${system}\n\n${user}` }] }],
-      generationConfig: { temperature: 0.2 },
+      generationConfig: { temperature },
     }),
   })
   if (!res.ok) {
@@ -69,12 +77,14 @@ async function callGeminiChat(
   return text
 }
 
-function insufficientAnswer(): string {
+function noApiFallback(question: string): string {
   return [
-    'ตอนนี้ยังไม่พบข้อมูลที่เพียงพอในฐานความรู้ HedBoon สำหรับคำถามนี้ครับ',
+    'ตอนนี้ยังเชื่อมต่อโมเดล AI ไม่ได้ และยังไม่พบชิ้นข้อมูลที่ตรงพอในคลัง HedBoon ครับ',
     '',
-    'ลองถามเรื่องที่มีในระบบ เช่น ขึ้นบ้านใหม่ งานบวช ขันธ์ 5 บายศรี ฮีต 12 บุญอัฐิ หรือเลี้ยงผีตาแฮก',
-    'หรือสอบทานรายละเอียดกับผู้รู้ท้องถิ่น/วัดในพื้นที่ของท่าน',
+    `คำถามของคุณ: ${question}`,
+    '',
+    'ลองถามเรื่องงานบุญอีสาน เช่น ขึ้นบ้านใหม่ งานบวช ขันธ์ 5 บายศรี ฮีต 12 หรือตั้งค่า API key แล้วถามใหม่ได้เลย',
+    'รายละเอียดจริงควรสอบทานกับผู้รู้ท้องถิ่น หมอขวัญ หรือวัดในพื้นที่ด้วยนะครับ',
   ].join('\n')
 }
 
@@ -82,7 +92,7 @@ export function buildOfflineRagAnswer(
   question: string,
   retrieved: RetrievedChunk[],
 ): string {
-  if (!retrieved.length) return insufficientAnswer()
+  if (!retrieved.length) return noApiFallback(question)
 
   const lines = [
     'จากฐานความรู้ HedBoon (โหมดความรู้ในเครื่อง — ยังไม่ได้ใช้โมเดล AI) พบข้อมูลที่เกี่ยวข้องดังนี้:',
@@ -98,6 +108,52 @@ export function buildOfflineRagAnswer(
   lines.push('หมายเหตุ: ประเพณีอาจแตกต่างกันตามท้องถิ่น ควรสอบทานกับผู้รู้ในชุมชน')
   void question
   return lines.join('\n').trim()
+}
+
+async function answerWithModels(options: {
+  question: string
+  context: string
+  hasContext: boolean
+  openaiApiKey?: string
+  geminiApiKey?: string
+  openaiModel?: string
+  geminiModel?: string
+}): Promise<{ answer: string; provider: RagProvider } | null> {
+  const system = options.hasContext ? RAG_SYSTEM_PROMPT : EXPERT_SYSTEM_PROMPT
+  const userPrompt = buildUserPrompt(options.question, options.context)
+  const temperature = options.hasContext ? 0.25 : 0.4
+
+  if (options.openaiApiKey) {
+    try {
+      const answer = await callOpenAIChat(
+        system,
+        userPrompt,
+        options.openaiApiKey,
+        options.openaiModel || 'gpt-4o-mini',
+        temperature,
+      )
+      return { answer, provider: 'openai' }
+    } catch (err) {
+      console.warn('RAG OpenAI failed', err)
+    }
+  }
+
+  if (options.geminiApiKey) {
+    try {
+      const answer = await callGeminiChat(
+        system,
+        userPrompt,
+        options.geminiApiKey,
+        options.geminiModel || 'gemini-2.0-flash',
+        temperature,
+      )
+      return { answer, provider: 'gemini' }
+    } catch (err) {
+      console.warn('RAG Gemini failed', err)
+    }
+  }
+
+  return null
 }
 
 export async function runRagPipeline(options: {
@@ -150,58 +206,25 @@ export async function runRagPipeline(options: {
 
   const sources = toSources(retrieved)
   const context = buildContext(retrieved)
+  const hasContext = retrieved.length > 0
 
-  if (!retrieved.length) {
+  const modelAnswer = await answerWithModels({
+    question,
+    context,
+    hasContext,
+    openaiApiKey: options.openaiApiKey,
+    geminiApiKey: options.geminiApiKey,
+    openaiModel: options.openaiModel,
+    geminiModel: options.geminiModel,
+  })
+
+  if (modelAnswer) {
     return {
-      answer: insufficientAnswer(),
-      sources: [],
-      provider: 'offline',
-      chunkCount: 0,
+      answer: modelAnswer.answer,
+      sources,
+      provider: modelAnswer.provider,
+      chunkCount: retrieved.length,
       usedRetrieval: true,
-    }
-  }
-
-  const userPrompt = buildUserPrompt(question, context)
-  const openaiKey = options.openaiApiKey
-  const geminiKey = options.geminiApiKey
-
-  if (openaiKey) {
-    try {
-      const answer = await callOpenAIChat(
-        RAG_SYSTEM_PROMPT,
-        userPrompt,
-        openaiKey,
-        options.openaiModel || 'gpt-4o-mini',
-      )
-      return {
-        answer,
-        sources,
-        provider: 'openai' as RagProvider,
-        chunkCount: retrieved.length,
-        usedRetrieval: true,
-      }
-    } catch (err) {
-      console.warn('RAG OpenAI failed', err)
-    }
-  }
-
-  if (geminiKey) {
-    try {
-      const answer = await callGeminiChat(
-        RAG_SYSTEM_PROMPT,
-        userPrompt,
-        geminiKey,
-        options.geminiModel || 'gemini-2.0-flash',
-      )
-      return {
-        answer,
-        sources,
-        provider: 'gemini',
-        chunkCount: retrieved.length,
-        usedRetrieval: true,
-      }
-    } catch (err) {
-      console.warn('RAG Gemini failed', err)
     }
   }
 

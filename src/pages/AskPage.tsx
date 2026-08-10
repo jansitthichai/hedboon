@@ -31,7 +31,7 @@ interface ChatMessage {
 const welcome: ChatMessage = {
   id: 'welcome',
   role: 'assistant',
-  text: 'สวัสดีครับ ผม HedBoon ผู้ช่วยเรื่องงานบุญและประเพณีอีสาน\nระบบนี้ค้นจากฐานความรู้ก่อนแล้วค่อยตอบ (RAG) — ลองถาม เช่น ขันธ์ 5 คืออะไร หรือขึ้นบ้านใหม่ต้องเตรียมอะไรบ้าง',
+  text: 'สวัสดีครับ ผม HedBoon ผู้ช่วยและผู้รู้เรื่องงานบุญ พิธีกรรม และประเพณีอีสาน\nถ้ามีในคลังความรู้จะอ้างจากนั้นก่อน ถ้ายังไม่มีก็จะช่วยอธิบายในฐานะผู้เชี่ยวชาญประเพณีอีสานให้ — คุยมาได้เลยครับ',
 }
 
 function newId() {
@@ -161,16 +161,20 @@ export function AskPage() {
                 {msg.role === 'assistant' && msg.provider && (
                   <div className="mt-2 space-y-1 border-t border-[var(--line)]/80 pt-2 text-[10px] text-[var(--muted)]">
                     <p>ตอบโดย: {providerLabel[msg.provider]}</p>
-                    {typeof msg.chunkCount === 'number' && msg.chunkCount > 0 && (
-                      <p>แหล่งข้อมูลที่ใช้: {msg.chunkCount} รายการ</p>
-                    )}
-                    {msg.sources && msg.sources.length > 0 && (
-                      <ol className="mt-1 list-decimal space-y-0.5 pl-4">
-                        {msg.sources.map((s) => (
-                          <li key={s.chunkId}>{s.title}</li>
-                        ))}
-                      </ol>
-                    )}
+                    {msg.sources && msg.sources.length > 0 ? (
+                      <>
+                        {typeof msg.chunkCount === 'number' && msg.chunkCount > 0 && (
+                          <p>แหล่งจากคลังความรู้: {msg.chunkCount} รายการ</p>
+                        )}
+                        <ol className="mt-1 list-decimal space-y-0.5 pl-4">
+                          {msg.sources.map((s) => (
+                            <li key={s.chunkId}>{s.title}</li>
+                          ))}
+                        </ol>
+                      </>
+                    ) : msg.provider !== 'offline' ? (
+                      <p>โหมดผู้เชี่ยวชาญประเพณีอีสาน (ยังไม่มีในคลังโดยตรง)</p>
+                    ) : null}
                   </div>
                 )}
               </div>
