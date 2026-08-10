@@ -2,6 +2,13 @@ import { Link } from 'react-router-dom'
 
 const features = [
   {
+    title: 'งานบุญ / ประเพณี',
+    kicker: 'Knowledge Library',
+    emoji: '📚',
+    desc: 'อ่านและค้นหาข้อมูลพิธีกรรม ของใช้ และความเชื่อจากคลังความรู้',
+    to: '/traditions',
+  },
+  {
     title: 'วางแผนงานบุญ',
     kicker: 'Planner',
     emoji: '📋',
@@ -52,6 +59,9 @@ export function HomePage() {
             <Link to="/plan" className="btn-primary">
               🎊 เริ่มวางแผนงานบุญ
             </Link>
+            <Link to="/traditions" className="btn-secondary">
+              📚 ดูคลังความรู้
+            </Link>
             <Link to="/ask" className="btn-secondary">
               💬 คุยกับ AI
             </Link>
@@ -61,13 +71,13 @@ export function HomePage() {
 
       <section className="animate-rise-delay">
         <div className="mb-4">
-          <p className="section-kicker">สามแกนหลัก</p>
+          <p className="section-kicker">ฟีเจอร์หลัก</p>
           <h2 className="font-display mt-3 text-2xl text-[var(--ink)] md:text-3xl">
             จากความรู้ท้องถิ่นสู่แผนจัดงานจริง 🔥
           </h2>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (
             <Link key={feature.title} to={feature.to} className="feature-tile">
               <p className="text-2xl">{feature.emoji}</p>

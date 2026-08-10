@@ -5,6 +5,7 @@ import { PlanPage } from './pages/PlanPage'
 import { GraphPage } from './pages/GraphPage'
 import { TimelinePage } from './pages/TimelinePage'
 import { AskPage } from './pages/AskPage'
+import { TraditionsPage } from './pages/TraditionsPage'
 
 export default function App() {
   return (
@@ -15,6 +16,8 @@ export default function App() {
           <Route path="plan" element={<PlanPage />} />
           <Route path="graph" element={<GraphPage />} />
           <Route path="timeline" element={<TimelinePage />} />
+          <Route path="traditions" element={<TraditionsPage />} />
+          <Route path="traditions/:ceremonyId" element={<TraditionsPage />} />
           <Route path="ask" element={<AskPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>

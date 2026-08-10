@@ -28,9 +28,9 @@
   },
   {
     "id": "q05",
-    "question": "บุญกองข้าวคืออะไร?",
+    "question": "บุญข้าวประดับดินคืออะไร?",
     "expectCeremonyId": "riceHeap",
-    "expectKeywords": ["กองข้าว"],
+    "expectKeywords": ["ข้าวประดับดิน", "อุทิศ"],
     "mustRefuse": false
   },
   {

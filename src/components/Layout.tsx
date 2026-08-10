@@ -2,6 +2,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 
 const links = [
   { to: '/', label: 'หน้าแรก', end: true },
+  { to: '/traditions', label: 'งานบุญ/ประเพณี' },
   { to: '/plan', label: 'วางแผนงานบุญ' },
   { to: '/graph', label: 'Knowledge Graph' },
   { to: '/timeline', label: 'ฮีต 12' },

@@ -68,12 +68,20 @@ export function TimelinePage() {
 
         <div className="mt-6 flex flex-wrap gap-3">
           {selected.planCeremonyId ? (
-            <Link
-              to={`/plan?ceremony=${selected.planCeremonyId}`}
-              className="btn-primary"
-            >
-              วางแผนจัดงานที่เกี่ยวข้อง
-            </Link>
+            <>
+              <Link
+                to={`/traditions/${selected.planCeremonyId}`}
+                className="btn-primary"
+              >
+                อ่านข้อมูลในคลังความรู้
+              </Link>
+              <Link
+                to={`/plan?ceremony=${selected.planCeremonyId}`}
+                className="btn-secondary"
+              >
+                วางแผนจัดงานที่เกี่ยวข้อง
+              </Link>
+            </>
           ) : (
             <Link
               to="/ask"
