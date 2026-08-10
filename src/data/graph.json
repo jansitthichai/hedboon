@@ -109,7 +109,8 @@
     {
       "id": "puTa",
       "label": "เลี้ยงปู่ตา",
-      "kind": "ceremony"
+      "kind": "ceremony",
+      "detail": "บูชาบรรพบุรุษที่ดอนปู่ตา/ศาลหลักเมือง มักจัดเดือน 6 ก่อนบุญซำฮะ"
     },
     {
       "id": "athi",
@@ -128,6 +129,18 @@
       "label": "เลี้ยงผีตาแฮก",
       "kind": "ceremony",
       "detail": "เซ่นไหว้ผีประจำนาก่อนปักดำและหลังเก็บเกี่ยว"
+    },
+    {
+      "id": "belief-pu-ta",
+      "label": "ผีปู่ตา / ดอนปู่ตา",
+      "kind": "belief",
+      "detail": "วิญญาณบรรพบุรุษผู้คุ้มครองหมู่บ้าน ป่าสงวนชุมชน"
+    },
+    {
+      "id": "tao-cha",
+      "label": "เฒ่าจ้า",
+      "kind": "component",
+      "detail": "ผู้ติดต่อทางจิตระหว่างปู่ตากับชาวบ้าน"
     },
     {
       "id": "sticky-rice",
@@ -158,6 +171,10 @@
     { "id": "e20", "source": "khan5", "target": "riceHeap", "label": "ใช้ใน" },
     { "id": "e21", "source": "khan5", "target": "ageMerit", "label": "ใช้ใน" },
     { "id": "e22", "source": "flowers", "target": "puTa", "label": "ใช้ใน" },
+    { "id": "e22b", "source": "incense", "target": "puTa", "label": "ใช้ใน" },
+    { "id": "e22c", "source": "ya-kha", "target": "puTa", "label": "ใช้ใน" },
+    { "id": "e22d", "source": "belief-pu-ta", "target": "puTa", "label": "เชื่อมกับ" },
+    { "id": "e22e", "source": "tao-cha", "target": "puTa", "label": "นำพิธี" },
     { "id": "e23", "source": "khan5", "target": "athi", "label": "ใช้ใน" },
     { "id": "e24", "source": "holy-water", "target": "athi", "label": "ใช้ใน" },
     { "id": "e25", "source": "kong-boon", "target": "athi", "label": "ใช้ใน" },

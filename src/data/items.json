@@ -61,16 +61,16 @@
     "nameIsan": "ขันน้ำมันต์",
     "meaning": "ภาชนะใส่น้ำมนต์ในพิธีมงคล สำหรับพระสงฆ์สวดและประพรมให้ผู้ร่วมงานหรือสถานที่",
     "components": ["ขันหรือภาชนะใส่น้ำ", "น้ำสะอาด", "ฝักส้มป่อยแห่ง", "เทียนขี้ผึ้ง", "สายสิญจน์"],
-    "usedIn": ["housewarming", "wedding", "ordination", "riceHeap", "ageMerit"],
+    "usedIn": ["housewarming", "wedding", "ordination", "riceHeap", "ageMerit", "puTa"],
     "tips": "เตรียมขันสะอาดไว้ก่อนพระมาถึง มักวางคู่กับมัดหญ้าคา"
   },
   {
     "id": "ya-kha",
     "name": "มัดหญ้าคา",
     "nameIsan": "มัดหญ้าคา",
-    "meaning": "มัดหญ้าคาใช้จุ่มน้ำมนต์แล้วประพรม เพื่อความเป็นสิริมงคลในงานมงคล",
+    "meaning": "มัดหญ้าคาใช้จุ่มน้ำมนต์แล้วประพรม เพื่อความเป็นสิริมงคลในงานมงคล หรือมัดแทนวัว ควาย เป็ด ไก่ และคนในพิธีเลี้ยงปู่ตา",
     "components": ["หญ้าคา", "มัดให้จับถนัดมือ"],
-    "usedIn": ["housewarming", "wedding", "ordination", "riceHeap", "ageMerit"],
+    "usedIn": ["housewarming", "wedding", "ordination", "riceHeap", "ageMerit", "puTa"],
     "tips": "มัดให้แน่นพอจุ่มและสะบัดประพรมได้ บางท้องถิ่นใช้ใบมะยมแทน"
   },
   {
