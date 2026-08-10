@@ -32,11 +32,6 @@ export function HomePage() {
     <div className="space-y-10">
       <section className="hero-panel px-6 py-12 md:px-12 md:py-16">
         <div className="hero-content relative max-w-2xl animate-rise">
-          <div className="mb-4 flex flex-wrap items-center gap-2">
-            <span className="badge-sticker badge-sticker-accent">โครงงาน ม.ปลาย</span>
-            <span className="badge-sticker">ประเพณีอีสาน</span>
-          </div>
-
           <h1 className="font-display text-4xl leading-tight text-white md:text-5xl">
             HedBoon
             <span className="mt-1 block text-2xl font-medium text-white/90 md:text-3xl">
