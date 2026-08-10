@@ -8,9 +8,9 @@ await esbuild.build({
   bundle: true,
   platform: 'node',
   target: 'node20',
-  format: 'cjs',
-  outfile: 'api/chat.cjs',
+  format: 'esm',
+  outfile: 'api/chat.js',
   logLevel: 'info',
 })
 
-console.log('Bundled serverless API → api/chat.cjs')
+console.log('Bundled serverless API → api/chat.js')
