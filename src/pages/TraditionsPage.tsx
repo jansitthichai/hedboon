@@ -3,18 +3,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { ceremonies, getCeremony, getItem, heetMonths, ritualItems } from '../lib/knowledge'
 import type { Ceremony, CeremonyId, RitualItem } from '../types/hedboon'
 
-const ceremonyEmoji: Record<CeremonyId, string> = {
-  housewarming: '🏠',
-  ordination: '🙏',
-  wedding: '💒',
-  riceHeap: '🍚',
-  suKwan: '🎋',
-  ageMerit: '🎂',
-  puTa: '🌳',
-  athi: '🪔',
-  taHaek: '🌾',
-}
-
 const ceremonyTags: Record<CeremonyId, string[]> = {
   housewarming: ['มงคล', 'ครอบครัว'],
   ordination: ['พระพุทธศาสนา', 'ครอบครัว'],
@@ -130,7 +118,6 @@ function TraditionIndex() {
               className="feature-tile group text-left"
             >
               <div className="flex items-start justify-between gap-2">
-                <span className="text-3xl">{ceremonyEmoji[c.id]}</span>
                 <span
                   className={[
                     'rounded-full px-2 py-0.5 text-[10px] font-bold',
@@ -254,7 +241,6 @@ function CeremonyDetail({ ceremonyId }: { ceremonyId: CeremonyId }) {
 
       <header className="panel-isan p-6 md:p-8">
         <div className="flex flex-wrap items-start gap-4">
-          <span className="text-5xl">{ceremonyEmoji[ceremonyId]}</span>
           <div className="min-w-0 flex-1">
             <p className="section-kicker">เรื่องเล่าประเพณี</p>
             <h1 className="font-display mt-1 text-3xl text-[var(--primary)] md:text-4xl">
@@ -345,7 +331,7 @@ function CeremonyDetail({ ceremonyId }: { ceremonyId: CeremonyId }) {
           <ul className="mt-4 space-y-3">
             {ceremony.checklist.map((item) => (
               <li key={item.id} className="flex gap-2 text-sm">
-                <span className="text-[var(--lime)]">◆</span>
+                <span className="text-[var(--accent)]">◆</span>
                 <span>
                   <span className="font-medium text-[var(--ink)]">{item.name}</span>
                   {item.note && <span className="text-[var(--muted)]"> ({item.note})</span>}
@@ -375,13 +361,13 @@ function CeremonyDetail({ ceremonyId }: { ceremonyId: CeremonyId }) {
 
       {linkedHeet.length > 0 && (
         <section className="panel-isan p-5">
-          <h2 className="font-display text-xl text-[var(--pink-hot)]">เชื่อมกับฮีต 12</h2>
+          <h2 className="font-display text-xl text-[var(--primary)]">เชื่อมกับฮีต 12</h2>
           <ul className="mt-3 space-y-2">
             {linkedHeet.map((m) => (
               <li key={m.month}>
                 <Link
                   to="/timeline"
-                  className="text-sm font-medium text-[var(--purple)] hover:text-[var(--pink-hot)]"
+                  className="text-sm font-medium text-[var(--primary-light)] hover:text-[var(--primary)]"
                 >
                   {m.nameIsan} — {m.nameTh}
                   {m.gregorianHint ? ` (${m.gregorianHint})` : ''}
@@ -415,14 +401,14 @@ function CeremonyDetail({ ceremonyId }: { ceremonyId: CeremonyId }) {
 
       <div className="flex flex-wrap gap-3 border-t border-[var(--line)] pt-6">
         <Link to={`/plan?ceremony=${ceremonyId}`} className="btn-secondary">
-          📋 ไปวางแผนจัดงานนี้
+          ไปวางแผนจัดงานนี้
         </Link>
         <Link
           to="/ask"
           state={{ preset: `${ceremony.nameTh} มีอะไรที่ควรรู้บ้าง` }}
           className="btn-primary"
         >
-          💬 ถาม AI เพิ่มเติม
+          ถาม AI เพิ่มเติม
         </Link>
       </div>
     </article>
