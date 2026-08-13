@@ -2,11 +2,11 @@ import { NavLink, Outlet } from 'react-router-dom'
 
 const links = [
   { to: '/', label: 'หน้าแรก', end: true },
-  { to: '/traditions', label: 'งานบุญ/ประเพณี' },
+  { to: '/traditions', label: 'งานบุญ/ประเพณี', hideOnMobile: true },
   { to: '/plan', label: 'วางแผนงานบุญ' },
   { to: '/graph', label: 'Knowledge Graph' },
   { to: '/timeline', label: 'ฮีต 12' },
-  { to: '/ask', label: 'คุยกับ AI' },
+  { to: '/ask', label: 'คุยกับ AI', hideOnMobile: true },
 ]
 
 export function Layout() {
@@ -47,23 +47,25 @@ export function Layout() {
         </div>
 
         <div className="flex gap-1.5 overflow-x-auto px-4 pb-3 md:hidden">
-          {links.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.end}
-              className={({ isActive }) =>
-                [
-                  'shrink-0 rounded-lg px-3 py-1.5 text-xs transition',
-                  isActive
-                    ? 'nav-pill-active'
-                    : 'border border-[rgba(244,215,122,0.35)] bg-[var(--header)] text-[var(--gold-soft)]',
-                ].join(' ')
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
+          {links
+            .filter((link) => !link.hideOnMobile)
+            .map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.end}
+                className={({ isActive }) =>
+                  [
+                    'shrink-0 rounded-lg px-3 py-1.5 text-xs transition',
+                    isActive
+                      ? 'nav-pill-active'
+                      : 'border border-[rgba(244,215,122,0.35)] bg-[var(--header)] text-[var(--gold-soft)]',
+                  ].join(' ')
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
         </div>
       </header>
 
