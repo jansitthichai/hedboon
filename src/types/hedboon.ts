@@ -74,8 +74,15 @@ export interface HeetMonth {
   nameIsan: string
   gregorianHint?: string
   summary: string
+  /** เมื่อไหร่จัด / จังหวะตามปฏิทิน */
+  timing?: string
+  /** ความเชื่อ / ความหมาย */
+  belief?: string
+  /** ลำดับการปฏิบัติที่พบทั่วไป */
+  practices?: string[]
   highlights: string[]
   planCeremonyId?: CeremonyId
+  sources?: string[]
 }
 
 export interface GuestFormula {

@@ -15,12 +15,14 @@ export function Layout() {
       <header className="site-header">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
           <NavLink to="/" className="flex items-center gap-3">
-            <span className="logo-mark font-display text-base">เฮ</span>
+            <span className="logo-mark">
+              <img src="/logo-hedboon.png" alt="HedBoon" />
+            </span>
             <span>
-              <span className="font-display block text-lg leading-none text-[var(--primary)]">
+              <span className="font-display block text-lg leading-none text-[var(--gold-soft)]">
                 HedBoon
               </span>
-              <span className="mt-0.5 block text-xs font-medium tracking-wide text-[var(--muted)]">
+              <span className="mt-0.5 block text-xs font-medium tracking-wide text-[var(--gold)]">
                 เฮ็ดบุญ · ผู้ช่วยประเพณีอีสาน
               </span>
             </span>
@@ -33,7 +35,7 @@ export function Layout() {
                 to={link.to}
                 end={link.end}
                 className={({ isActive }) =>
-                  ['nav-pill', isActive ? 'nav-pill-active' : 'text-[var(--muted)] hover:text-[var(--primary)]'].join(
+                  ['nav-pill', isActive ? 'nav-pill-active' : 'text-[rgba(255,249,232,0.78)] hover:text-[var(--gold-soft)]'].join(
                     ' ',
                   )
                 }
@@ -55,7 +57,7 @@ export function Layout() {
                   'shrink-0 rounded-lg px-3 py-1.5 text-xs transition',
                   isActive
                     ? 'nav-pill-active'
-                    : 'border border-[var(--line)] bg-white text-[var(--muted)]',
+                    : 'border border-[rgba(244,215,122,0.35)] bg-[var(--header)] text-[var(--gold-soft)]',
                 ].join(' ')
               }
             >
@@ -74,10 +76,10 @@ export function Layout() {
           <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
             <p>
               <span className="font-display text-[var(--primary)]">HedBoon AI</span>
-              {' — '}
+              <span className="mx-1.5 text-[var(--saffron)]">✦</span>
               ผู้ช่วยวางแผนประเพณีและพิธีกรรมอีสาน
             </p>
-            <p>ข้อมูลเพื่อการเรียนรู้ ควรสอบทานกับผู้รู้ท้องถิ่นก่อนจัดงานจริง</p>
+            <p className="text-[var(--accent)]">ข้อมูลเพื่อการเรียนรู้ ควรสอบทานกับผู้รู้ท้องถิ่นก่อนจัดงานจริง</p>
           </div>
           <p className="text-xs leading-relaxed md:text-sm">
             โดย เด็กชายไตรภูมิ สุวรรณยุทธที, เด็กชายธนกฤต ประสิทธิ์นอก, เด็กชายสุกฤษฎิ์ ยอดคำมี

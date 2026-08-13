@@ -184,7 +184,8 @@ export function chunkHeet12(months: HeetMonth[]): KnowledgeChunk[] {
     id: 'heet12__overview',
     title: 'ฮีต 12 — ภาพรวม',
     content: [
-      'ฮีต 12 คือประเพณีบุญรายเดือนตามปฏิทินอีสาน',
+      'ฮีต 12 คือประเพณีบุญรายเดือนตามปฏิทินจันทรคติของชาวอีสาน ผสานพุทธศาสนา วิถีเกษตรกรรม และความเชื่อท้องถิ่น',
+      'คำว่า “ฮีต” หมายถึงจารีตที่สืบทอดจนเป็นประเพณี ส่วน “คอง 14” คือแนวทางปฏิบัติทางสังคมที่มักกล่าวคู่กับฮีตสิบสอง',
       ...months.map(
         (m) =>
           `${m.nameIsan}${m.gregorianHint ? ` (${m.gregorianHint})` : ''}: ${m.nameTh} — ${m.summary}`,
@@ -192,11 +193,15 @@ export function chunkHeet12(months: HeetMonth[]): KnowledgeChunk[] {
     ].join('\n'),
     category: 'heet12',
     type: 'heet-month',
-    source: 'HedBoon heet12.json · ฮีต 12',
+    source:
+      'ศูนย์ศิลปวัฒนธรรม มข. · ฮีต 12 คอง 14 https://cac.kku.ac.th/ฮีต-12-คอง-14/ · https://share.google/qMn3fzC55c9s2IOTr',
     keywords: uniqueKeywords(
       'ฮีต',
       'ฮีต 12',
       'ฮีต12',
+      'ฮีตสิบสอง',
+      'คอง 14',
+      'คองสิบสี่',
       'heet',
       'heet12',
       'บุญเดือน',
@@ -208,19 +213,27 @@ export function chunkHeet12(months: HeetMonth[]): KnowledgeChunk[] {
 
   const perMonth = months.map((m) => {
     const monthWord = thaiMonthWord(m.month)
+    const primarySource =
+      m.sources?.[0] ?? `HedBoon heet12.json · ${m.nameTh}`
     return {
       id: `heet12__m${m.month}`,
       title: `${m.nameIsan} — ${m.nameTh}`,
       content: [
         `${m.nameIsan}${m.gregorianHint ? ` (ตรงกับประมาณเดือน${m.gregorianHint})` : ''}`,
         `ชื่องานบุญ: ${m.nameTh}`,
+        m.timing ? `ช่วงเวลา: ${m.timing}` : '',
+        m.belief ? `ความเชื่อ: ${m.belief}` : '',
         m.summary,
+        m.practices?.length ? `ลำดับปฏิบัติ: ${m.practices.join(' | ')}` : '',
         `จุดเด่น: ${m.highlights.join(', ')}`,
-      ].join('\n'),
+        m.sources?.length ? `แหล่งอ้างอิง: ${m.sources.join(' | ')}` : '',
+      ]
+        .filter(Boolean)
+        .join('\n'),
       category: 'heet12' as const,
       ceremonyId: m.planCeremonyId,
       type: 'heet-month' as const,
-      source: `HedBoon heet12.json · ${m.nameTh}`,
+      source: sourceLabel([primarySource, m.nameTh]),
       keywords: uniqueKeywords(
         m.nameTh,
         m.nameIsan,
@@ -252,6 +265,28 @@ export function chunkComparisons(): KnowledgeChunk[] {
       type: 'comparison',
       source: 'HedBoon knowledge · เปรียบเทียบกฐิน/ผ้าป่า',
       keywords: uniqueKeywords('กฐิน', 'ผ้าป่า', 'เปรียบเทียบ', 'ทอดกฐิน', 'กำหนดกาล'),
+    },
+    {
+      id: 'compare__khao_padabdin_sak',
+      title: 'เปรียบเทียบบุญข้าวประดับดินกับบุญข้าวสาก',
+      content: [
+        'บุญข้าวประดับดิน (เดือนเก้า): นิยมช่วงแรมกลางเดือนเก้า ห่ออาหารวางตามต้นไม้/พื้นวัด เพื่ออุทิศญาติผู้ล่วงลับ สัมภเวสี และเปรตแบบไม่เฉพาะเจาะจงมากนัก',
+        'บุญข้าวสาก (เดือนสิบ): นิยมขึ้น 15 ค่ำ เดือนสิบ จัดสำรับอาหารพร้อมสลากระบุชื่อผู้รับส่วนกุศล ให้พระจับสลากรับสำรับ',
+        'จุดร่วม: อุทิศส่วนกุศลแก่ผู้ล่วงลับและแสดงความกตัญญู',
+        'รายละเอียดวันและวิธีห่ออาจต่างตามท้องถิ่น ควรสอบทานกับวัดหรือผู้ใหญ่ในชุมชน',
+      ].join('\n'),
+      category: 'comparison',
+      type: 'comparison',
+      source:
+        'Kapook Travel · บุญข้าวประดับดิน https://travel.kapook.com/view259348.html',
+      keywords: uniqueKeywords(
+        'ข้าวประดับดิน',
+        'ข้าวสาก',
+        'เปรียบเทียบ',
+        'บุญเดือนเก้า',
+        'บุญเดือนสิบ',
+        'อุทิศส่วนกุศล',
+      ),
     },
   ]
 }

@@ -366,7 +366,7 @@ function CeremonyDetail({ ceremonyId }: { ceremonyId: CeremonyId }) {
             {linkedHeet.map((m) => (
               <li key={m.month}>
                 <Link
-                  to="/timeline"
+                  to={`/timeline?month=${m.month}`}
                   className="text-sm font-medium text-[var(--primary-light)] hover:text-[var(--primary)]"
                 >
                   {m.nameIsan} — {m.nameTh}

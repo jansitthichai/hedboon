@@ -12,11 +12,11 @@ import 'reactflow/dist/style.css'
 import { graphEdges, graphNodes } from '../lib/knowledge'
 
 const kindColor: Record<string, string> = {
-  item: '#1e3a5f',
-  ceremony: '#2f6b4f',
-  belief: '#8a6a2f',
-  component: '#3d6b8c',
-  taboo: '#9a3d2e',
+  item: '#075b45',
+  ceremony: '#d9a52e',
+  belief: '#e98b23',
+  component: '#0a7a5c',
+  taboo: '#9c3f68',
 }
 
 export function GraphPage() {
@@ -37,7 +37,7 @@ export function GraphPage() {
           },
           data: { label: n.label },
           style: {
-            background: kindColor[n.kind] ?? '#1e3a5f',
+            background: kindColor[n.kind] ?? '#075b45',
             color: '#fff',
             border: selectedId === n.id ? '2px solid #b8941f' : '1px solid rgba(255,255,255,0.2)',
             borderRadius: 10,
@@ -99,7 +99,7 @@ export function GraphPage() {
                 const raw = graphNodes.find((g) => g.id === n.id)
                 return raw ? kindColor[raw.kind] : '#6a00ff'
               }}
-              maskColor="rgba(30,58,95,0.06)"
+              maskColor="rgba(3,60,46,0.08)"
             />
             <Controls />
           </ReactFlow>
@@ -133,19 +133,19 @@ export function GraphPage() {
 
           <div className="mt-6 space-y-1 text-xs text-[var(--muted)]">
             <p>
-              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#1e3a5f]" /> ของใช้
+              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#075b45]" /> ของใช้
             </p>
             <p>
-              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#2f6b4f]" /> พิธี
+              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#d9a52e]" /> พิธี
             </p>
             <p>
-              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#8a6a2f]" /> ความเชื่อ
+              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#e98b23]" /> ความเชื่อ
             </p>
             <p>
-              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#3d6b8c]" /> ส่วนประกอบ
+              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#0a7a5c]" /> ส่วนประกอบ
             </p>
             <p>
-              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#9a3d2e]" /> ข้อห้าม
+              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[#9c3f68]" /> ข้อห้าม
             </p>
           </div>
         </aside>

@@ -130,7 +130,9 @@ export function AskPage() {
 
       <div className="panel-isan flex min-h-[520px] flex-1 flex-col overflow-hidden md:min-h-[580px]">
         <div className="flex items-center gap-3 border-b border-[var(--line)] px-4 py-3 md:px-5">
-          <span className="logo-mark grid h-10 w-10 place-items-center font-display text-base">เฮ</span>
+          <span className="logo-mark h-10 w-10">
+            <img src="/logo-hedboon.png" alt="HedBoon" />
+          </span>
           <div className="min-w-0">
             <p className="font-display text-lg leading-none text-[var(--primary)]">HedBoon</p>
             <p className="mt-1 text-xs text-[var(--muted)]">
